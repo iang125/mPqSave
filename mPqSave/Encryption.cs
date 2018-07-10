@@ -3,7 +3,7 @@ using System.IO;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace PqSave
+namespace mPqSave
 {
     public static class Encryption
     {

@@ -2,7 +2,7 @@
 using System.Linq;
 using ZeroFormatter;
 
-namespace PqSave
+namespace mPqSave
 {
     public class SaveManager
     {

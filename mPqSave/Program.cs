@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 
-namespace PqSave
+namespace mPqSave
 {
     public static class Program
     {

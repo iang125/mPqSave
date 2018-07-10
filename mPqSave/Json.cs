@@ -4,7 +4,7 @@ using System.Linq;
 using Newtonsoft.Json;
 using ZeroFormatter;
 
-namespace PqSave
+namespace mPqSave
 {
     public static class Json
     {
