@@ -315,16 +315,16 @@ namespace mPqSave
     [ZeroFormattable]
     public class PlayerData
     {
-        [Index(0)] public virtual string name { get; set; }
+        [Index(0)] public virtual IList<char> name { get; set; }
         [Index(1)] public virtual int termsVersion { get; set; }
-        [Index(2)] public virtual string playerKey { get; set; }
-        [Index(3)] public virtual string deviceUUID { get; set; }
-        [Index(4)] public virtual string supportID { get; set; }
+        [Index(2)] public virtual IList<char> playerKey { get; set; }
+        [Index(3)] public virtual IList<char> deviceUUID { get; set; }
+        [Index(4)] public virtual IList<char> supportID { get; set; }
         [Index(5)] public virtual bool coppaLimit { get; set; }
         [Index(6)] public virtual bool purchaseCheck { get; set; }
         [Index(7)] public virtual IList<PurchaseWork> purchaseWorks { get; set; }
-        [Index(8)] public virtual string migrationBackupId { get; set; }
-        [Index(9)] public virtual string migrationBackupKey { get; set; }
+        [Index(8)] public virtual IList<char> migrationBackupId { get; set; }
+        [Index(9)] public virtual IList<char> migrationBackupKey { get; set; }
         [Index(10)] public virtual long backupDatetime { get; set; }
         [Index(11)] public virtual CompensationWork compensationWork { get; set; }
         [Index(12)] public virtual IList<ID> timeoveredDLC { get; set; }
@@ -349,11 +349,11 @@ namespace mPqSave
     [ZeroFormattable]
     public class PurchaseWork
     {
-        [Index(0)] public virtual string commonProductId { get; set; }
-        [Index(1)] public virtual string platformTransactionId { get; set; }
+        [Index(0)] public virtual IList<char> commonProductId { get; set; }
+        [Index(1)] public virtual IList<char> platformTransactionId { get; set; }
         [Index(2)] public virtual long appTransactionId { get; set; }
         [Index(3)] public virtual bool validated { get; set; }
-        [Index(4)] public virtual string purchaseLocation { get; set; }
+        [Index(4)] public virtual IList<char> purchaseLocation { get; set; }
     }
 
     [ZeroFormattable]

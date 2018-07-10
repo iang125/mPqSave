@@ -32,7 +32,7 @@ namespace mPqSave
                 var script = File.ReadAllText(filename);
                 var scriptOptions = ScriptOptions.Default
                     .AddReferences(Assembly.GetExecutingAssembly(), typeof(ZeroFormatter.DirtyTracker).Assembly, typeof(ZeroFormatter.IKeyTuple).Assembly)
-                    .AddImports("System", "System.Linq", "PqSave", "ZeroFormatter")
+                    .AddImports("System", "System.Linq", "mPqSave", "ZeroFormatter")
                     .WithSourceResolver(SourceFileResolver.Default)
                     .WithMetadataResolver(ScriptMetadataResolver.Default)
                     .WithEmitDebugInformation(true);
@@ -42,6 +42,7 @@ namespace mPqSave
             {
                 Console.WriteLine($"Error compiling {filename}:");
                 Console.WriteLine(string.Join(Environment.NewLine, ex.Diagnostics));
+                throw ex;
             }
             catch (AggregateException ex)
             {
@@ -54,10 +55,12 @@ namespace mPqSave
                         .Replace("Submission#0", "Script");
                     Console.WriteLine(message);
                 }
+                throw ex;
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"Error running {filename}:\n{ex.Message}");
+                throw ex;
             }
 
             Console.WriteLine($"Finished {filename}");

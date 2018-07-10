@@ -9,16 +9,16 @@ namespace mPqSave
         public CheckData CheckData { get; set; }
         public SerializeData SerializeData { get; set; }
 
-        public SaveManager(byte[] saveEnc)
+        public SaveManager(byte[] key, byte[] saveEnc)
         {
-            var saveDec = Encryption.DecryptSave(saveEnc);
+            var saveDec = Encryption.DecryptSave(key, saveEnc);
             CheckData = ZeroFormatterSerializer.Deserialize<CheckData>(saveDec);
             SerializeData = ZeroFormatterSerializer.Deserialize<SerializeData>(saveDec, 56);
         }
 
         public SaveManager() { }
 
-        public byte[] Export()
+        public byte[] Export(byte[] key)
         {
             var head = ZeroFormatterSerializer.Serialize(CheckData);
             var body = ZeroFormatterSerializer.Serialize(SerializeData);
@@ -28,7 +28,7 @@ namespace mPqSave
             Array.Copy(head, saveDec, head.Length);
             Array.Copy(body, 0, saveDec, head.Length, body.Length);
 
-            var saveEnc = Encryption.EncryptSave(saveDec);
+            var saveEnc = Encryption.EncryptSave(key, saveDec);
             return saveEnc;
         }
     }
